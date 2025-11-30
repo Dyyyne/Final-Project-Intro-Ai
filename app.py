@@ -1,6 +1,7 @@
 # app.py
 
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Dict, Any, List
 from pathlib import Path
@@ -15,6 +16,15 @@ from sentence_transformers import SentenceTransformer
 # ---------- Setup ----------
 
 app = FastAPI(title="Journal Mind Map API (MVP)")
+
+# Enable CORS so the HTML file can talk to this API
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 DATA_DIR = Path("data")
 
