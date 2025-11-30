@@ -1,0 +1,44 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diary Emotion Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Diary Emotion Detector</h1>
+    <p>Write your diary entry below and click Analyze.</p>
+
+    <textarea id="diaryText" placeholder="Type your diary entry here..."></textarea>
+
+    <button onclick="analyzeEmotion()">Analyze Emotion</button>
+
+    <div id="result">Predicted Emotion: </div>
+</div>
+
+<script>
+async function analyzeEmotion() {
+    const diaryText = document.getElementById("diaryText").value;
+
+    const response = await fetch("http://127.0.0.1:8000/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ text: diaryText })
+    });
+
+    const data = await response.json();
+
+    document.getElementById("result").innerText =
+        "Predicted Emotion: " + data.emotion;
+}
+</script>
+
+</body>
+</html>
