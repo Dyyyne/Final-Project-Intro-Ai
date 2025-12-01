@@ -5,12 +5,14 @@ AI Emotion Detection Project
 
 How to run the code:
 
+
         1. Download the project and make sure you have app.py, index.html, style.css, and the entire data folder
         
         2. Install dependencies using, pip install fastapi uvicorn pandas numpy scikit-learn joblib sentence-transformers pydantic
         
         3. start the FastAPI server using, uvicorn app:app
-        
+
+        (Make sure you have Ollama installed with BERT downloaded and have the server running before doing this next step. Otherwise, it won't work)
         4. open index.html in your browser to use the interface
 
 
